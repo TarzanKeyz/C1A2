@@ -23,7 +23,7 @@
    <children>
       <AnchorPane prefHeight="530.0" prefWidth="585.0">
          <children>
-            <TextArea fx:id="txaListeEntiers" layoutX="27.0" layoutY="32.0" prefHeight="474.0" prefWidth="265.0" />
+            <TextArea fx:id="txaListeEntiers" editable="false" layoutX="27.0" layoutY="32.0" prefHeight="474.0" prefWidth="265.0" />
             <ComboBox fx:id="cmb" layoutX="317.0" layoutY="32.0" onAction="#cmbActionEvent" prefHeight="25.0" prefWidth="209.0" promptText="Choisir une action" />
             <RadioButton fx:id="radCroissant" layoutX="317.0" layoutY="140.0" mnemonicParsing="false" text="Croissant">
                <toggleGroup>

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Optional;
 
 public class Controller {
@@ -112,12 +113,22 @@ public class Controller {
      * @param actionEvent
      */
     public void btnChercherActionEvent(ActionEvent actionEvent) {
+        try {
         String [] tab = txaListeEntiers.getText().split("\n");
         int [] tabInt = new int [tab.length];
         for (int i=0; i<tab.length; i++){
             tabInt[i] = Integer.parseInt(tab[i]);
         }
-        String reponse = String.valueOf(Tableaux.fouilleSeq(tabInt, Integer.parseInt(txfValeur.getText())));
-        labMessage.setText(reponse);
+
+            String reponse = String.valueOf(Tableaux.fouilleSeq(tabInt, Integer.parseInt(txfValeur.getText())));
+            labMessage.setText(reponse);
+        } catch (NumberFormatException e){
+            Alert alertError = new Alert (Alert.AlertType.ERROR);
+            alertError.setTitle("Attention!");
+            alertError.setHeaderText(null);
+            alertError.setContentText("Veuillez entrer un entier");
+            alertError.show();
+            txfValeur.clear();
+        }
     }
 }
