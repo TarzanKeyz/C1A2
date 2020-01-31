@@ -85,7 +85,7 @@ public class Tableaux {
 
     public static int maximum(int[] tab) {
         int max = tab[0];
-        for (int i = 0; i < tab.length - 1; i++) {
+        for (int i = 0; i < tab.length; i++) {
             if (tab[i] > max)
                 max = tab[i];
         }

@@ -17,10 +17,10 @@ public class Controller {
     public TextField txfMaximum;
     public TextField txfMinimum;
     public TextField txfMoyenne;
-    public TextField Valeur;
     public Label labMessage;
     public CheckBox chbConfirmation;
     public ComboBox cmb;
+    public TextField txfValeur;
 
     public void initialize(){
         cmb.getItems().addAll("Vider", "Garnir", "Nombre 1 à 100", "Nombre -25 à 25");
@@ -72,7 +72,20 @@ public class Controller {
         }
     }
 
+    /**
+     * Remplit les texfield max, min et moyenne
+     * @param actionEvent
+     */
     public void btnTrouverActionEvent(ActionEvent actionEvent) {
+        String [] tab = txaListeEntiers.getText().split("\n");
+        int [] tabInt = new int [tab.length];
+        for (int i=0; i<tab.length; i++){
+            tabInt[i] = Integer.parseInt(tab[i]);
+            System.out.println(tabInt[i]);
+        }
+        txfMaximum.setText(String.valueOf(Tableaux.maximum(tabInt)));
+        txfMinimum.setText(String.valueOf(Tableaux.minimum(tabInt)));
+        txfMoyenne.setText(String.valueOf(Tableaux.moyenne(tab)));
     }
 
     /**
@@ -94,6 +107,17 @@ public class Controller {
             Platform.exit();
     }
 
+    /**
+     * Cherche un entier donné par l'utilisateur
+     * @param actionEvent
+     */
     public void btnChercherActionEvent(ActionEvent actionEvent) {
+        String [] tab = txaListeEntiers.getText().split("\n");
+        int [] tabInt = new int [tab.length];
+        for (int i=0; i<tab.length; i++){
+            tabInt[i] = Integer.parseInt(tab[i]);
+        }
+        String reponse = String.valueOf(Tableaux.fouilleSeq(tabInt, Integer.parseInt(txfValeur.getText())));
+        labMessage.setText(reponse);
     }
 }
